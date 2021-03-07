@@ -1,0 +1,85 @@
+@import '../assets/css/constant.scss';
+
+.container {
+  min-height: 100vh;
+}
+.header {
+  background: white;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 3rem;
+  box-sizing: border-box;
+  padding: 0 1.6rem;
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+.site {
+  color: $color-main-red;
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  padding-right: 1.3rem;
+  margin-right: 1.6rem;
+  .logo {
+    width: 1.2rem;
+    margin-right: .4rem;
+  }
+}
+.menus {
+  box-sizing: border-box;
+  flex-grow: 1;
+  text-align: left;
+}
+.menu {
+  display: inline-block;
+  padding: .8rem;
+  margin-right: .2rem;
+  border-bottom: .2rem solid white;
+  &.current {
+    border-color: $color-main-red;
+  }
+  &:hover {
+    border-color: $color-main-red;
+  }
+}
+.navis {
+  display: flex;
+}
+.navi {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  margin-right: .8rem;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:after {
+    display: none;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  &.user {
+    max-width: 6rem;
+    overflow: hidden;
+  }
+}
+
+
+@media only screen and (max-width: 64rem) {
+  .header {
+    padding: 0 .8rem;
+  }
+  .site {
+    display: none;
+  }
+}

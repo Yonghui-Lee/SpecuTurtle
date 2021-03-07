@@ -1,0 +1,18 @@
+.DS_Store
+bin
+satellity
+internal/configs/*
+!internal/configs/config.go
+!internal/configs/config.example
+publish
+public
+app/public/sitemap.xml
+!app/public
+
+# web
+node_modules
+dist
+.cache
+.env
+.env.development
+.env.production
