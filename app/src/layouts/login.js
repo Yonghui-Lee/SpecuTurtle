@@ -135,12 +135,12 @@ class Login extends Component {
 
     let signIn = (
       <div>
-        <div className={style.content}>
+        {/* <div className={style.content}>
           <Button type='link' action={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${state.github_client_id}`} classes='button' text={i18n.t('login.github')} original />
         </div>
         <div className={style.or}>
           OR
-        </div>
+        </div> */}
         <form onSubmit={this.handleSignIn}>
           <div>
             <input type='text' name='email' required value={state.email} autoComplete='off' placeholder={i18n.t('account.identity')} onChange={this.handleChange} />
@@ -187,9 +187,9 @@ class Login extends Component {
     let register = (
       <div>
         <form onSubmit={this.handleRegister}>
-          <div>
+          {/* <div>
             <input type='text' name='code' required value={state.code} autoComplete='off' placeholder={i18n.t('account.verification')} onChange={this.handleChange} />
-          </div>
+          </div> */}
           <div>
             <input type='text' name='username' required value={state.username} autoComplete='off' placeholder={i18n.t('account.username')} onChange={this.handleChange} />
           </div>

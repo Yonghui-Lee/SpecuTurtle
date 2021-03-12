@@ -6,7 +6,6 @@ import (
 	"database/sql"
 	"encoding/binary"
 	"fmt"
-	"satellity/internal/clouds"
 	"satellity/internal/durable"
 	"satellity/internal/session"
 	"strings"
@@ -43,12 +42,12 @@ func CreateEmailVerification(ctx context.Context, purpose, email, recaptcha stri
 		return nil, err
 	}
 
-	success, err := clouds.VerifyRecaptcha(ctx, recaptcha)
-	if err != nil {
-		return nil, session.ServerError(ctx, err)
-	} else if !success {
-		return nil, session.RecaptchaVerifyError(ctx)
-	}
+	// success, err := clouds.VerifyRecaptcha(ctx, recaptcha)
+	// if err != nil {
+	// 	return nil, session.ServerError(ctx, err)
+	// } else if !success {
+	// 	return nil, session.RecaptchaVerifyError(ctx)
+	// }
 	ev := &EmailVerification{
 		VerificationID: uuid.Must(uuid.NewV4()).String(),
 		Email:          strings.TrimSpace(email),
@@ -79,9 +78,9 @@ func CreateEmailVerification(ctx context.Context, purpose, email, recaptcha stri
 		return nil, session.TransactionError(ctx, err)
 	}
 	if should {
-		if err := clouds.SendVerificationEmail(ctx, purpose, ev.Email, ev.Code); err != nil {
-			return nil, session.ServerError(ctx, err)
-		}
+		// if err := clouds.SendVerificationEmail(ctx, purpose, ev.Email, ev.Code); err != nil {
+		// 	return nil, session.ServerError(ctx, err)
+		// }
 	}
 	return ev, nil
 }
@@ -94,12 +93,12 @@ func VerifyEmailVerification(ctx context.Context, verificationID, code, username
 		if err != nil || ev == nil {
 			return err
 		}
-		if ev.Code != code {
-			ev, err = findEmailVerificationByEmailAndCode(ctx, tx, ev.Email, code)
-			if err != nil || ev == nil {
-				return err
-			}
-		}
+		// if ev.Code != code {
+		// 	ev, err = findEmailVerificationByEmailAndCode(ctx, tx, ev.Email, code)
+		// 	if err != nil || ev == nil {
+		// 		return err
+		// 	}
+		// }
 		if ev.CreatedAt.Add(time.Hour * 24).Before(time.Now()) {
 			return session.VerificationCodeInvalidError(ctx)
 		}
