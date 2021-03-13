@@ -99,9 +99,9 @@ func VerifyEmailVerification(ctx context.Context, verificationID, code, username
 		// 		return err
 		// 	}
 		// }
-		if ev.CreatedAt.Add(time.Hour * 24).Before(time.Now()) {
-			return session.VerificationCodeInvalidError(ctx)
-		}
+		// if ev.CreatedAt.Add(time.Hour * 24).Before(time.Now()) {
+		// 	return session.VerificationCodeInvalidError(ctx)
+		// }
 		_, err = tx.Exec(ctx, "DELETE FROM email_verifications WHERE verification_id=$1", ev.VerificationID)
 		if err != nil {
 			return err
