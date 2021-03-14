@@ -25,6 +25,7 @@ type Option struct {
 		Port     string `yaml:"port"`
 		Name     string `yaml:"name"`
 	} `yaml:"database"`
+	GptToken string `yaml:"gpt_token"`
 	Github struct {
 		ClientID     string `yaml:"client_id"`
 		ClientSecret string `yaml:"client_secret"`
